@@ -1,8 +1,3 @@
-from config import Config
+from services.open_weather import fetch_weather
 
-print (Config.WEATHER_API_KEY)
-print (Config.CITY)
-
-
-a = 5
-b = 10
+fetch_weather()
