@@ -1,4 +1,6 @@
 from config import Config
+from datetime import datetime
+from utils.functions import convert_to_celsius as c
 import requests
 
 def fetch_weather():
@@ -8,4 +10,13 @@ def fetch_weather():
 
     response = requests.get(url)
     data = response.json()
-    print(data)
+    weather = {
+        "temp" : c(data.get("main").get("temp")),
+        "feels_like" : c(data.get("main").get("feels_like")),
+        "pressure" : data.get("main").get("pressure"),
+        "humidity" : data.get("main").get("humidity"),
+        "wind_speed" : data.get("wind").get("speed"),
+        "place" : data.get("name").get("name"),
+        "timestamp" : datetime.now().strftime("%H:%M:%S %d/%m/%Y")
+    }
+    return weather
