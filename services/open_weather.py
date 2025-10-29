@@ -16,7 +16,7 @@ def fetch_weather():
         "pressure" : data.get("main").get("pressure"),
         "humidity" : data.get("main").get("humidity"),
         "wind_speed" : data.get("wind").get("speed"),
-        "place" : data.get("name").get("name"),
+        "place" : data.get("name"),
         "timestamp" : datetime.now().strftime("%H:%M:%S %d/%m/%Y")
     }
     return weather
